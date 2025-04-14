@@ -74,7 +74,7 @@ if __name__ == '__main__':
         'https://github.com/stone1652/jok3r ...')
     try:
         new_url = "https://github.com/stone1652/jok3r"
-    
+        repo = git.Repo('.')
         # Check if the 'origin' remote URL is outdated, and update if needed.
         if repo.remotes.origin.url != new_url:
             repo.remotes.origin.set_url(new_url)
