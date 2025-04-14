@@ -80,7 +80,7 @@ if __name__ == '__main__':
             repo.remotes.origin.set_url(new_url)
             logger.info("Updated remote 'origin' URL to: {}".format(new_url))
         else:
-        logger.info("Remote 'origin' already set to: {}".format(new_url))
+            logger.info("Remote 'origin' already set to: {}".format(new_url))
         
         # Pull the latest changes (this is equivalent to using git.cmd.Git('.') internally)
         gitoutput = repo.git.pull()
