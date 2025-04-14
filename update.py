@@ -73,8 +73,18 @@ if __name__ == '__main__':
     Output.title2('Step #2: Update source code from master branch at ' \
         'https://github.com/stone1652/jok3r ...')
     try:
-        g = git.cmd.Git('.')
-        gitoutput = g.pull()
+        new_url = "https://github.com/stone1652/jok3r"
+    
+        # Check if the 'origin' remote URL is outdated, and update if needed.
+        if repo.remotes.origin.url != new_url:
+            repo.remotes.origin.set_url(new_url)
+            logger.info("Updated remote 'origin' URL to: {}".format(new_url))
+        else:
+        logger.info("Remote 'origin' already set to: {}".format(new_url))
+        
+        # Pull the latest changes (this is equivalent to using git.cmd.Git('.') internally)
+        gitoutput = repo.git.pull()
+        
     except Exception as e:
         logger.error('An error occured while performing "git pull": {}'.format(e))
         sys.exit(1)
